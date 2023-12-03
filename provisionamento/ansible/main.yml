@@ -1,0 +1,6 @@
+- hosts: prod
+  remote_user: root
+  become: yes
+  name: Install Docker
+  roles:
+    - install_docker

@@ -1,0 +1,26 @@
+#RKE Kubernetes Master
+- name: k8s-master
+  cpus: 2
+  memory: 4096
+  ip: 192.168.56.60
+  box: oraclelinux/8
+  url: https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json
+  script: provisionamento/init.sh
+
+#RKE Kubernetes Worker 1
+- name: worker-1
+  cpus: 1
+  memory: 2048
+  ip: 192.168.56.70
+  box: oraclelinux/8
+  url: https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json
+  script: provisionamento/init.sh
+
+#RKE Kubernetes Worker 2
+- name: worker-2
+  cpus: 1
+  memory: 2048
+  ip: 192.168.56.80
+  box: oraclelinux/8
+  url: https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json
+  script: provisionamento/init.sh

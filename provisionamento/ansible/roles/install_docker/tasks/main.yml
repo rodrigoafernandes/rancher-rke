@@ -1,0 +1,21 @@
+---
+- name: Instalar Pacotes dependencia
+  dnf:
+    name: ['curl', 'dnf-utils', 'zip', 'unzip']
+    update_cache: true
+    state: present
+- name: Adicionar Repositorio Docker CE CentOS
+  shell: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+- name: Remover pacote runc
+  dnf:
+    name: ["runc"]
+    state: absent
+- name: Instalar Docker CE
+  dnf:
+    name: ["docker-ce"]
+    state: present
+- name: Start Docker service
+  systemd_service:
+    name: docker
+    state: started
+    enabled: true
