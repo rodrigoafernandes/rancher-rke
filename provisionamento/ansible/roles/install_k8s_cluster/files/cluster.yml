@@ -1,0 +1,28 @@
+nodes:
+  - address: 192.168.56.60
+    internal_address: 172.16.22.12
+    user: rkeoci
+    role: [controlplane, etcd]
+  - address: 192.168.56.70
+    internal_address: 172.16.32.37
+    user: rkeoci
+    role: [worker]
+  - address: 192.168.56.80
+    internal_address: 172.16.42.73
+    user: rkeoci
+    role: [worker]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
+
+kubernetes_version: v1.25.6-rancher4-1

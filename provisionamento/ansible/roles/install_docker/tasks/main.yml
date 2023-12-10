@@ -1,21 +1,15 @@
 ---
-- name: Instalar Pacotes dependencia
-  dnf:
-    name: ['curl', 'dnf-utils', 'zip', 'unzip']
-    update_cache: true
-    state: present
-- name: Adicionar Repositorio Docker CE CentOS
-  shell: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-- name: Remover pacote runc
-  dnf:
-    name: ["runc"]
-    state: absent
-- name: Instalar Docker CE
-  dnf:
-    name: ["docker-ce"]
-    state: present
+- name: Download install docker rancher script
+  get_url:
+    url: https://releases.rancher.com/install-docker/20.10.sh
+    dest: /tmp/install-docker.20.10.sh
+    mode: '0100'
+- name: Install Docker
+  shell: /tmp/install-docker.20.10.sh
 - name: Start Docker service
   systemd_service:
     name: docker
     state: started
     enabled: true
+- name: Grant Docker execution to ansible_user
+  shell: sudo usermod -aG docker {{ ansible_user }}

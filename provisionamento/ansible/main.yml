@@ -1,6 +1,8 @@
 - hosts: prod
-  remote_user: root
+  remote_user: rkeoci
   become: yes
   name: Install Docker
   roles:
     - install_docker
+    # - disable_swap
+    # - install_k8s_cluster
