@@ -1,16 +1,20 @@
 nodes:
   - address: 192.168.56.60
-    internal_address: 172.16.22.12
     user: rkeoci
-    role: [controlplane, etcd]
+    role:
+    - controlplane
+    - etcd
+    ssh_key_path: /home/rodrigo/projects/rancher-rke/keys/devsecops.pem
   - address: 192.168.56.70
-    internal_address: 172.16.32.37
     user: rkeoci
-    role: [worker]
+    role:
+    - worker
+    ssh_key_path: /home/rodrigo/projects/rancher-rke/keys/devsecops.pem
   - address: 192.168.56.80
-    internal_address: 172.16.42.73
     user: rkeoci
-    role: [worker]
+    role:
+    - worker
+    ssh_key_path: /home/rodrigo/projects/rancher-rke/keys/devsecops.pem
 
 services:
   etcd:
