@@ -7,6 +7,7 @@ infra/run:
 	rke up --config provisionamento/ansible/roles/install_k8s_cluster/files/cluster.yml
 
 infra/destroy:
+	rke remove --config provisionamento/ansible/roles/install_k8s_cluster/files/cluster.yml --force
 	ssh-keygen -f "/home/rodrigo/.ssh/known_hosts" -R "192.168.56.60"
 	ssh-keygen -f "/home/rodrigo/.ssh/known_hosts" -R "192.168.56.70"
 	ssh-keygen -f "/home/rodrigo/.ssh/known_hosts" -R "192.168.56.80"
