@@ -1,9 +1,13 @@
 nodes:
+  - address: 192.168.56.90
+    user: rkeoci
+    role:
+    - etcd
+    ssh_key_path: /home/rodrigo/projects/rancher-rke/keys/devsecops.pem
   - address: 192.168.56.60
     user: rkeoci
     role:
     - controlplane
-    - etcd
     ssh_key_path: /home/rodrigo/projects/rancher-rke/keys/devsecops.pem
   - address: 192.168.56.70
     user: rkeoci
@@ -22,11 +26,8 @@ services:
     creation: 6h
     retention: 24h
 
-# Required for external TLS termination with
-# ingress-nginx v0.22+
-ingress:
-  provider: nginx
-  options:
-    use-forwarded-headers: "true"
+network:
+  plugin: flannel
 
-kubernetes_version: v1.25.6-rancher4-1
+# kubernetes_version: v1.30.10-rancher1-1
+kubernetes_version: v1.31.6-rancher1-1

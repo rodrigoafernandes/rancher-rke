@@ -1,11 +1,11 @@
 ---
 - name: Download install docker rancher script
   get_url:
-    url: https://releases.rancher.com/install-docker/20.10.sh
-    dest: /tmp/install-docker.20.10.sh
+    url: https://releases.rancher.com/install-docker/25.0.sh
+    dest: /tmp/install-docker.25.0.sh
     mode: '0100'
 - name: Install Docker
-  shell: /tmp/install-docker.20.10.sh
+  shell: /tmp/install-docker.25.0.sh
 - name: Start Docker service
   systemd_service:
     name: docker
