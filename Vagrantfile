@@ -14,8 +14,8 @@ Vagrant.configure("2") do |config|
         server.vm.box = machines["box"]
         server.vm.box_url = machines["url"]
         server.vm.box_check_update = false
-        server.vm.network "private_network", ip: machines["ip"], dns: "8.8.8.8" 
-  
+        server.vm.network "private_network", ip: machines["ip"]
+
         server.vm.provider "virtualbox" do |vb|
           vb.customize ["modifyvm", :id, "--groups", "/Rke-Devops-Tools"]
           vb.memory = machines["memory"]

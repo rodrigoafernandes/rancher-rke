@@ -5,3 +5,4 @@
   roles:
     - install_docker
     - disable_swap
+    - k8s_conf
