@@ -41,6 +41,6 @@ ingress:
     provider: none
 
 # kubernetes_version: v1.30.10-rancher1-1
-kubernetes_version: v1.31.6-rancher1-1
+kubernetes_version: v1.32.4-rancher1-1
 
 cluster_name: devops-onprem
