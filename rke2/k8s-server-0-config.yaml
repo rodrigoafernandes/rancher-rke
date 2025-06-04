@@ -1,0 +1,12 @@
+server: https://192.168.56.92:9345
+token: devsecops2025
+node-ip: 192.168.56.60
+disable-etcd: true
+cni: calico
+tls-san:
+  - 192.168.56.92
+node-taint:
+  - "CriticalAddonsOnly=true:NoExecute"
+disable:
+  - rke2-ingress-nginx
+  - rke2-metrics-server

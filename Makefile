@@ -7,13 +7,13 @@ infra/run:
 	ansible-playbook --inventory-file provisionamento/ansible/hosts.yml provisionamento/ansible/main.yml
 	rke up --config provisionamento/ansible/roles/install_k8s_cluster/files/cluster.yml
 	sleep 180
+	kubectl apply -f provisionamento/ansible/roles/install_k8s_cluster/files/metrics_server.yaml
 	kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
 	sleep 120
 	kubectl apply -f provisionamento/ansible/roles/install_k8s_cluster/files/ip_address_pool.yaml
 	kubectl apply -f provisionamento/ansible/roles/install_k8s_cluster/files/l2_advertisement.yaml
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/cloud/deploy.yaml
 	sleep 180
-	kubectl apply -f provisionamento/ansible/roles/install_k8s_cluster/files/metrics_server.yaml
 	kubectl apply -f provisionamento/ansible/roles/install_k8s_cluster/files/longhorn.yaml
 
 infra/destroy:
